@@ -1,0 +1,3 @@
+Customers,id INTEGER,name TEXT(40),Address TEXT(100)
+Supliers,id INTEGER,name TEXT(40),code TEXT(10)
+Products,id INTEGER,name TEXT(40),code TEXT(10), Suplier_id INTEGER

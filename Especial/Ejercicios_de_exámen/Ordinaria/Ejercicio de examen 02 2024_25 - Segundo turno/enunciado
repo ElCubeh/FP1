@@ -1,0 +1,56 @@
+1) Escriba una función verficar(código) (2 puntos)
+La función verificar debe:
+Comprobar, usando expresiones regulares, si un código de asignatura tiene un formato correcto del tipo: 3 letras mayúsculas en el rango de la 'P' a la 'S' (ambas incluidas), seguidas opcionalmente de un espacio o un guion medio, y después obligatoriamente 5 dígitos. Ejemplos de códigos admitidos: PRQ45038, PRQ 45038, PRQ-45038.
+
+![alt text](image.png)
+
+En caso de ser un código correcto, y por tanto verificado, debe devolver el código sin guion ni espacio en blanco. Ejemplo: PRQ45038
+En caso de ser un código incorrecto no puede ser verificado y debe devolver None.
+2) Escriba una función actualizar(datos_académicos, código, notas) (8 puntos)
+datos académicos es una tupla conteniendo tres diccionarios que representan datos académicos:
+
+El primer diccionario es de asignaturas, tiene como claves un código de asignatura de tipo string; y como valor asociado una tupla con su nombre, su semestre y su número de créditos. Los semestres se codifican con un número entero del 1 al 8; y los créditos pueden tener los valores 3, 6, 9 ó 12.
+El segundo diccionario es de estudiantes, usa como clave una string con un DNI verificado de estudiante y como valor una string con su nombre.
+El tercer diccionario es de calificaciones, usa como clave un código de asignatura y como valor un diccionario, el cual a su vez usa como clave una string con un DNI y como valor un número entre cero y diez que representa la calificación obtenida por ese estudiante en esa asignatura. Para las asignaturas que no hayan sido calificadas, su valor será un diccionario vacío.
+código es una string que representa el código de una asignatura
+
+notas es una lista de tuplas tal que cada tupla contiene un dni de estudiante (str) y una nota (float). Representa una lista de notas para actualizar de la asignatura cuyo código se pasa como segundo parámetro.
+
+La función actualizar debe:
+Comprobar que el código es correcto usando la función verificar.
+Si el código NO ESTÁ VERIFICADO o NO ESTÁ en el diccionario de asignaturas, no hacer nada.
+Si el código está verificado y está en el diccionario de asignaturas, actualizar el diccionario de calificaciones, para que refleje las notas de la lista notas. En caso de que notas incluya algún dni de estudiante que no esté en estudiantes, se ignorará.
+La actualización implica modificar datos, añadir los que no están y no borrar los que no aparecen en los datos de entrada.
+Ejemplo:
+
+datos_academicos = (
+        {
+            "PQR40953": ("Fundamentos de Programación I", 1, 6),
+            "SPP12345": ("Matemáticas", 2, 9),
+            "QRP48092": ("Física", 2, 6),
+            "RRP45876": ("Redes", 3, 6)
+        },
+        {
+            "40444444X": "Pepito Grillo",
+            "40555555Y": "María López",
+            "40555566H": "Marta Pérez"
+        },
+        {
+            "PQR40953": {"40444444X": 7.5, "40555555Y": 4.0},
+            "SPP12345": {"40444444X": 5.5, "40555555Y": 8.0, "40555566H": 7.0},
+            "QRP48092": {},
+            "RRP45876": {"40444444X": 5.5, "40555555Y": 3.0, "40555566H": 7.0}
+        }
+    )
+código = "PQR40953"
+notas = [("40444444X", 8.8), ("40555555Y", 7.5), ("40555566H", 9.0), ("25256525G", 6.4)]
+Resultado (los cambios se resaltan en azul):
+datos_academicos = (
+        <<<LOS DOS PRIMEROS DICCIONARIOS NO CAMBIARÍAN>>>,
+        {
+            "PQR40953": {"40444444X": 8.8, "40555555Y": 7.5, "40555566H": 9.0},
+            "SPP12345": {"40444444X": 5.5, "40555555Y": 8.0, "40555566H": 7.0},
+            "QRP48092": {}
+            "RRP45876": {"40444444X": 5.5, "40555555Y": 3.0, "40555566H": 7.0},
+        }
+    )    

@@ -1,0 +1,11 @@
+Escriba una función llamada import_data que reciba dos parámetros. El primer parámetro será un diccionario en el que las claves son strings que representan matrículas de coches, y los valores son listas de cuatro elementos: marca, modelo, año de matriculación y kilometraje. Por ejemplo;
+
+{
+    "ABC123": ["Toyota", "Camry", "3018", 50000],
+    "DEF446": ["Ford", "Focus", "2017", 40000]
+}
+El segundo parámetro será una lista de tuplas. Cada tupla está formada por dos elementos: matrícula y kilometraje. Para cada elemento de la lista, la función deberá:
+
+Comprobar, usando expresiones regulares, que la matrícula está compuesta por 3 letras mayúsculas seguidas de 3 dígitos.
+En caso de que el formato de la matrícula sea correcto, comprobar si se encuentra en el diccionario y, de ser así, actualizar el kilometraje almacenado en este con el kilometraje del elemento actual de la lista.
+La función devolverá una nueva lista con las matrículas incorrectas y aquellas que no se encuentren en el diccionario.

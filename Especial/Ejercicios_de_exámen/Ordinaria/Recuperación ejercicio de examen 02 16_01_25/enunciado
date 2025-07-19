@@ -1,0 +1,41 @@
+1) Escriba una función esmatricula(matricula) (2 puntos)
+La función esmatricula(...) debe:
+
+Comprobar si una matrícula tiene un formato válido del tipo: 6 números, seguidos opcionalmente por un espacio o un guion, más 2 letras mayúsculas. 
+
+![alt text](image.png)
+
+Ejemplo de matrículas válidas: 123456AB o 123456 AB o 123456-AB
+Si la matrícula es válida, la función debe devolver la matrícula con guion. Para el ejemplo anterior debe devolver: 123456-AB.
+Si la matrícula NO es válida, la función debe devolver None.
+Utilizar expresiones regulares para comprobar si una matrícula tiene un formato válido y los grupos para devolverla con guion.
+2) Escriba una función islaCV(flota, isla, marca) (8 puntos)
+La función islaCV(...) debe calcular la suma de las potencias en CV (potencia total) de los vehículos de una marca que operan en una isla y debe devolver una tupla con el nombre de la isla y la potencia total.
+
+flota es una tupla que contiene dos diccionarios:
+
+El primer diccionario contiene información de los vehículos. La clave es la matrícula (string) y su valor es una tupla con la marca (string), tipo de combustible (string), y su potencia en caballos de vapor CV (integer positivo).
+El segundo diccionario contiene los vehículos que operan en las islas. La clave es el nombre de la isla (string) y su valor es una lista de matrículas (string) en cualquiera de los formatos admitidos.
+Si la isla NO está en el segundo diccionario, devuelve None.
+Si en la isla NO opera ningún vehículo de esa marca, se devuelve el mensaje "No se han encontrado resultados".
+Use la función esmatricula(...) para obtener la matrícula con guion antes de acceder al primer diccionario. Ignórense las matrículas no válidas.
+Ejemplo:
+
+flota = (
+    {
+        "524967-AB": ("Mercedes", "gasolina", 230),
+        "852364-JZ": ("AUDI", "diesel", 200),
+        "480925-BM": ("FIAT", "hidrógeno", 120),
+        "753951-QT": ("AUDI", "eléctrico", 180)
+    },
+    {
+        "Fuerteventura": ["524967 AB", "852364JZ"],
+        "Lanzarote"    : ["524967AB", "852364-JZ", "480925 BM", "753951-QT"],
+        "Tenerife"     : ["524967-AB", "480925BM", "753951QT"],
+        "Gran Canaria" : ["524967AB", "480925BM"]
+    }
+)
+
+Se solicita los CV que operan en Lanzarote de la marca AUDI.
+La función islaCV(flota, "Lanzarote", "AUDI") debe devolver ("Lanzarote", 380)
+

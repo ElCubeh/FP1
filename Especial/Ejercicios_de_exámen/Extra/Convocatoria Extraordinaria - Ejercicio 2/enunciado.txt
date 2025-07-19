@@ -1,0 +1,12 @@
+Escriba una función llamada import_data que reciba dos parámetros de tipo str. El primer parámetro es el nombre de una base de datos que contiene una tabla llamada coches con el formato del siguiente ejemplo:
+
+c:\Users\guill\AppData\Local\Packages\MicrosoftWindows.Client.Core_cw5n1h2txyewy\TempState\ScreenClip\{DAF58689-FA47-4E52-BCDE-B353958CDD89}.png
+
+El segundo parámetro es el nombre de un fichero de texto que deberá abrirse en modo lectura. Este fichero estará formado por líneas con formato CSV, cada una de las cuales contendrá, separadas por comas, una matrícula, una marca y un kilometraje. Por ejemplo:
+
+ABC123,Toyota,55000
+JKL012,Chevrolet,31000
+PQR678,Ford,23000
+La función deberá utilizar la información almacenada en el fichero para actualizar el kilometraje de los coches cuya marca y matrícula coincidan con los datos del fichero. En el ejemplo anterior se actualizarían los registros del Toyota y del Chevrolet, pero no el del Ford, ya que la matrícula proporcionada no corresponde a un vehículo de esa marca.
+
+Importante: si se abre la conexión a la base de datos sin usar with, antes de cerrarla deberá ejecutarse la operación conexión.commit() para asegurar el volcado de los datos modificados, donde conexión es el nombre asignado a la conexión al abrirla.

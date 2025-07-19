@@ -1,0 +1,12 @@
+Escriba una función llamada export_data que reciba tres parámetros de tipo str. El primer parámetro es el nombre de una base de datos que tiene una tabla llamada coches con el formato del ejemplo:
+
+![alt text]({4A1588A5-0DA9-4A48-A5E9-AE9F1201F4F5}.png)
+
+El segundo parámetro es el nombre de un fichero de texto que deberá abrirse para escribir.
+
+El tercer parámetro es el nombre de una marca de coches.
+
+La función deberá recuperar de la base de datos la matrícula, el modelo y el año de todos los coches de la marca pasada como tercer parámetro y rellenar el fichero poniendo en cada línea los datos correspondientes a un coche separados por comas. Por ejemplo, si la marca es "Toyota", el contenido del fichero, para la tabla anterior, debería ser:
+
+ABC123,Camry,2018
+GHI789,Corolla,2019

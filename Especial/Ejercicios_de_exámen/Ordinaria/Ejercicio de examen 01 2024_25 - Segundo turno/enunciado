@@ -1,0 +1,48 @@
+
+Presión arterial
+La presión arterial es la fuerza que ejerce la sangre contra las paredes de las arterias mientras circula por el cuerpo. Es un indicador clave de la salud cardiovascular y se mide en milímetros de mercurio (mm Hg). Una lectura de presión arterial consta de dos cifras:
+
+Presión sistólica: Es el número superior y representa la presión en las arterias cuando el corazón se contrae y bombea sangre.
+Presión diastólica: Es el número inferior y refleja la presión en las arterias cuando el corazón está en reposo entre latidos.
+Contexto:
+
+Se han tomado mediciones diarias de la presión arterial de una persona, y cada medición se ha almacenado como una tupla con dos valores:
+
+El primer valor de la tupla corresponde a la presión diastólica (inferior).
+El segundo valor corresponde a la presión sistólica (superior).
+Las mediciones diarias se agrupan en listas de 7 tuplas (una por día), que representan las mediciones de una semana. A su vez, las semanas (de las cuales puede haber un número variable) se agrupan en una lista de listas.
+
+Ejemplo:
+
+    # La lista puede contener muchas semanas
+    weekly_readings = [
+        [   # Week 1
+            (75, 120), (80, 115), (78, 118), (77, 126),
+            (76, 117), (79, 110), (74, 112)
+        ],
+        [   # Week 2
+            (76, 120), (75, 115), (78, 129), (77, 124),
+            (80, 113), (79, 132), (78, 110)
+        ]
+    ]
+    Lista devuelta: [False, True]
+Lo que hay que hacer:
+
+Escriba una función llamada systolic_pressure_risk que tome una lista de listas de tuplas como la descrita y devuelva una nueva lista de valores booleanos. La lista devuelta tendrá tantos elementos como semanas haya en la lista pasada como parámetro.
+
+Los elementos de la lista devuelta tendrán el valor True si en la semana que ocupa la misma posición en la lista pasada como parámetro, el número de días en que la presión sistólica ha sido superior a 119 es mayor que el número de días en que no lo ha sido, indicando que es una semana de riesgo. De no ser así, el valor será False.
+
+Una medición de presión sistólica se considera de riesgo si es estrictamente mayor a 119 mm Hg. Mediciones de 119 mm Hg no se consideran de riesgo.
+
+Una semana se considera de riesgo si el número de días en los que la presión sistólica es mayor que 119 supera al número de días en que no lo es. 
+
+Ejemplo de salida:
+
+Para los datos anteriores, el resultado de: systolic_pressure_risk(weekly_readings) sería:
+
+[False, True]
+Explicación:
+
+Semana 1: No es de riesgo (2 días con presión sistólica > 119: 120 mm Hg y 126 mm Hg, y 5 días con presión ≤ 119: 115 mm Hg, 118 mm Hg, 117 mm Hg, 110 mm Hg y 112 mm Hg).
+
+Semana 2: Es de riesgo (4 días con presión sistólica > 119: 120 mm Hg, 129 mm Hg, 124 mm Hg, 132 mm Hg, y 3 días con presión ≤ 119: 115 mm Hg, 113 mm Hg, 110 mm Hg).
