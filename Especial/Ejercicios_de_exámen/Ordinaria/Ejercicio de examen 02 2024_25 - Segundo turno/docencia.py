@@ -2,17 +2,30 @@ import re
 from auxiliar import show
 
 
-def verificar(código):
-    """Desarrollar esta función de manera adecuada"""
-    """Si no la desarrolla, la nota máxima que podrá obtener será 8"""
+def verificar(codigo):
+    patron = r'^([P-S]{3})[ -]?(\d{5})$'
+    coincidencia = re.match(patron, codigo)
+    if coincidencia:
+        return coincidencia.group(1) + coincidencia.group(2)
+    return None
 
-    return código
 
-
-def actualizar(datos_académicos, código, notas):
-    """Completar esta función de manera adecuada"""
-
-    códigoOk = verificar(código)
+def actualizar(datos_academicos, codigo, notas):
+    codigo_verif = verificar(codigo)
+    if codigo_verif is None:
+        return
+    
+    asignaturas, estudiantes, calificaciones = datos_academicos
+    if codigo_verif not in asignaturas:
+        return
+    
+    if codigo_verif not in calificaciones:
+        calificaciones[codigo_verif] = {}
+    
+    for dni, nota in notas:
+        if dni in estudiantes:
+            calificaciones[codigo_verif][dni] = nota
+    codigo_ok = verificar(codigo)
 
 
 if __name__ == "__main__":

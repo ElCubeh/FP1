@@ -1,7 +1,19 @@
 from auxiliar import *
 
 # Escriba la función systolic_pressure_risk debajo de esta línea
-
+def systolic_pressure_risk(weekly_readings):
+    result = []
+    for week in weekly_readings:
+        high_systolic_days = 0
+        for day_reading in week:
+            systolic = day_reading[1]  # La presión sistólica es el segundo elemento
+            if systolic > 119:
+                high_systolic_days += 1
+        if high_systolic_days > len(week) - high_systolic_days:
+            result.append(True)
+        else:
+            result.append(False)
+    return result
 
 
 if __name__ == "__main__":

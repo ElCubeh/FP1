@@ -1,7 +1,22 @@
 import re
 
-# Escriba aquí la función solicitada
-
+def import_data(data, updates):
+    invalid_or_missing = []
+    pattern = r'^[A-Z]{3}\d{3}$'  # Patrón para 3 letras mayúsculas + 3 dígitos
+    
+    for plate, mileage in updates:
+        # Verificar formato de matrícula
+        if not re.match(pattern, plate):
+            invalid_or_missing.append(plate)
+            continue
+        
+        # Verificar existencia en el diccionario y actualizar kilometraje
+        if plate in data:
+            data[plate][3] = mileage  # Actualizar el cuarto elemento (kilometraje)
+        else:
+            invalid_or_missing.append(plate)
+    
+    return invalid_or_missing
 
 if __name__ == "__main__":
     coches = {
